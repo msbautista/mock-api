@@ -3,7 +3,7 @@
 msbautista/mockapi is an application for creating endpoints with customizable json responses.
 It's a tool when you need to mock an API for your frontend applications.
 
-# Requisitos
+# Requirements
 
 * Java 11
 * Intellij IDEA
@@ -14,7 +14,7 @@ It's a tool when you need to mock an API for your frontend applications.
 Import project in Intellij IDEA u other and execute MockapiApplication.java.
 You can also generate the project package `mvn package` and run with `java -jar target/mockapi-0.0.1-SNAPSHOT` .
 
-# Endpoints
+# API
 
 Create an endpoint [POST] `http://localhost:8080/addEndpoint`
 
