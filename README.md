@@ -1,0 +1,68 @@
+# MockaAPI
+
+msbautista/mockapi is an application for creating endpoints with customizable json responses.
+It's a tool when you need to mock an API for your frontend applications.
+
+# Requisitos
+
+* Java 11
+* Intellij IDEA
+* Postman for tests
+
+# Run
+
+Import project in Intellij IDEA u other and execute MockapiApplication.java.
+You can also generate the project package `mvn package` and run with `java -jar target/mockapi-0.0.1-SNAPSHOT` .
+
+# Endpoints
+
+Create an endpoint [POST] `http://localhost:8080/addEndpoint`
+
+```json
+{
+    "name": "anything/1",
+    "body": {
+        ...
+    },
+    "method": "POST"
+}
+```
+
+* **name**: Corresponds to the path to call
+* **body**: It is a json object to return when you call the path
+* **method**: Request type to use. It can be GET or POST.
+
+And ready! You can call the path and it will return configured object.
+
+# Example
+
+Send this request.
+
+
+```json
+{
+"name": "GetCars/All/",
+"body": {
+    "cars": [
+        {
+        "id": 1,
+        "name": "Ford"
+        }
+      ]
+    },
+"method": "POST"
+}
+```
+
+This request generates this endpoint `http://localhost:8080/GetCars/All/` and when you send a POST, the application returns the following response:
+
+```json
+{
+  "cars": [
+    {
+      "id": 1,
+      "name": "Ford"
+    }
+  ]
+}
+ ```
