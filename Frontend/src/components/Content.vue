@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row align="center" justify="center" class="ma-title py-5">
-      MOCKAPI
+     <span>&#9889;</span><span>MOCKAPI</span><span>&#9889;</span>
     </v-row>
     <v-row>
       <v-col>
@@ -20,7 +20,7 @@
       <v-jsoneditor v-model="json" :options="{ mode: 'code' }" :plus="false" />
     </v-row>
     <v-row justify="center" class="py-5">
-      <v-btn color="teal" elevation="2" @click="submitForm" outlined
+      <v-btn color="teal" elevation="2" class="white--text" @click="submitForm"
         >Generate</v-btn
       >
     </v-row>

@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color="teal" :absolute="true">
       <v-toolbar-title
-        ><span class="white--text">msbautista/mockapi</span></v-toolbar-title
+        ><span class="white--text">msbautista/mockapi</span> <span>&#129302;</span></v-toolbar-title
       >
     </v-app-bar>
     <v-main>
@@ -10,28 +10,36 @@
         <Content />
       </v-container>
     </v-main>
-    <v-footer dark padless :absolute="true">
-      <v-card class="flex" flat tile>
-        <v-card-title class="teal">
-          <strong class="subheading"
-            >Get connected with us on social networks!</strong
-          >
-
-          <v-spacer></v-spacer>
-
+  <v-footer
+    dark
+    padless
+    :absolute="true"
+  >
+    <v-card
+      flat
+      tile
+      class="flex teal lighten-1 white--text text-center"
+    >
+      <v-card-text>
           <v-btn class="mx-4" v-on:click="goToPage('https://www.linkedin.com/in/msbautista')" dark icon>
             <v-icon size="24px"> mdi-linkedin </v-icon>
           </v-btn>
           <v-btn class="mx-4" v-on:click="goToPage('https://github.com/msbautista')" dark icon>
             <v-icon size="24px"> mdi-github </v-icon>
           </v-btn>
-        </v-card-title>
+      </v-card-text>
 
-        <v-card-text class="py-2 white--text text-center">
-          Developed by msbautista
-        </v-card-text>
-      </v-card>
-    </v-footer>
+      <v-card-text class="white--text pt-0">
+        msbautista/mockapi is an application for creating endpoints with customizable json responses. It's a tool when you need to mock an API for your frontend applications.
+      </v-card-text>
+
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        {{ new Date().getFullYear() }} — <strong>Developed by msbautista</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
   </v-app>
 </template>
 
