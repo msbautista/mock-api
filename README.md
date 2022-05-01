@@ -16,7 +16,7 @@ You can also generate the project package `mvn package` and run with `java -jar 
 
 # API
 
-Create an endpoint [POST] `http://localhost:8080/addEndpoint`
+Create an endpoint [POST] `http://localhost:8000/addEndpoint`
 
 ```json
 {
@@ -54,7 +54,7 @@ Send this request.
 }
 ```
 
-This request generates this endpoint `http://localhost:8080/GetCars/All/` and when you send a POST, the application returns the following response:
+This request generates this endpoint `http://localhost:8000/GetCars/All/` and when you send a POST, the application returns the following response:
 
 ```json
 {
