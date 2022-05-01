@@ -19,10 +19,10 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn class="mx-4" dark icon>
+          <v-btn class="mx-4" v-on:click="goToPage('https://www.linkedin.com/in/msbautista')" dark icon>
             <v-icon size="24px"> mdi-linkedin </v-icon>
           </v-btn>
-          <v-btn class="mx-4" dark icon>
+          <v-btn class="mx-4" v-on:click="goToPage('https://github.com/msbautista')" dark icon>
             <v-icon size="24px"> mdi-github </v-icon>
           </v-btn>
         </v-card-title>
@@ -46,5 +46,10 @@ export default {
   },
   data: () => ({
   }),
+  methods: {
+    goToPage(url) {
+      window.open(url);
+    }
+  }
 };
 </script>
