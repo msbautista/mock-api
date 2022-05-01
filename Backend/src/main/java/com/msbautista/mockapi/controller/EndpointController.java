@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 public class EndpointController {
 
     private final String INTERNAL_SERVER_ERROR_MESSAGE = "An error occurred while processing the request.";
