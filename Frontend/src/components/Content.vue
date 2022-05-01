@@ -17,17 +17,16 @@
       </v-col>
     </v-row>
     <v-row class="px-3">
-      <v-jsoneditor
-        v-model="json"
-        :options="{ mode: 'code' }"
-        :plus="false"
-        @error="onError"
-      />
+      <v-jsoneditor v-model="json" :options="{ mode: 'code' }" :plus="false" />
     </v-row>
     <v-row justify="center" class="py-5">
-      <v-btn color="teal" elevation="2" @click="generatePath" outlined
+      <v-btn color="teal" elevation="2" @click="submitForm" outlined
         >Generate</v-btn
       >
+    </v-row>
+    <v-row align="center" justify="center">
+      <v-alert type="success" v-if="alertSuccess" >The path {{ name }} was generated successfull go to {{ `http://localhost:8000/${this.name}` }}</v-alert>
+      <v-alert type="error" v-if="alertError">{{ messageError }}</v-alert>
     </v-row>
   </v-container>
 </template>
@@ -39,39 +38,55 @@ import axios from "axios";
 export default {
   name: "Content",
   components: {
-    VJsoneditor,
+    VJsoneditor
   },
   data: () => ({
     methodList: ["GET", "POST"],
-    name: "msbautista/2001",
-    method: "GET",
-    json: {"myresponse": "this"},
+    name: "",
+    method: "",
+    json: { myresponse: "this" },
+    alertSuccess: false,
+    alertError: false,
+    messageError: ""
   }),
   methods: {
-    generatePath() {
+    validateForm() {
+      if(this.name == null || this.name == '' || this.method == null || this.method == '' || this.json == null) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    submitForm() {
+      if (!this.validateForm()) {
+        this.messageError = "Complete the form";
+        this.alertError = true;
+        return;
+      }
       axios
-        .post("http://localhost:8000/addEndpoint", {
-          name: this.name,
-          method: this.method,
-          body: this.json
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
+        .post(
+          "http://localhost:8000/addEndpoint",
+          {
+            name: this.name,
+            method: this.method,
+            body: this.json
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            }
           }
-        }
         )
-        .then(function (response) {
-          console.log(response);
+        .then(() => {
+          this.alertError = false;
+          this.alertSuccess = true;
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch(() => {
+          this.messageError = "An error has ocurred";
+          this.alertError = true;
         });
-    },
-    onError() {
-      console.log("error in json");
-    },
-  },
+    }
+  }
 };
 </script>
 
