@@ -3,18 +3,24 @@
 msbautista/mockapi is an application for creating endpoints with customizable json responses.
 It's a tool when you need to mock an API for your frontend applications.
 
-# Requirements
+This app was built with Java Spring Boot for the Backend and Vue.js for the Frontend.
+
+[TOC]
+
+#Backend
+
+## Requirements
 
 * Java 11
 * Intellij IDEA
 * Postman for tests
 
-# Run
+## Run
 
-Import project in Intellij IDEA u other and execute MockapiApplication.java.
+Import project in Intellij IDEA u other editor and execute MockapiApplication.java.
 You can also generate the project package `mvn package` and run with `java -jar target/mockapi-0.0.1-SNAPSHOT` .
 
-# API
+## API
 
 Create an endpoint [POST] `http://localhost:8000/addEndpoint`
 
@@ -34,7 +40,7 @@ Create an endpoint [POST] `http://localhost:8000/addEndpoint`
 
 And ready! You can call the path and it will return configured object.
 
-# Example
+## Example
 
 Send this request.
 
@@ -66,3 +72,15 @@ This request generates this endpoint `http://localhost:8000/GetCars/All/` and wh
   ]
 }
  ```
+ 
+# Frontend
+ 
+## Requirements
+
+ * Node.js and NPM
+ 
+## Run
+
+Open a terminal in the Frontend folder and enter `npm i` and then `npm run serve`.
+you can also build index.html via `npm run build`.` .
+ 
