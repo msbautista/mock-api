@@ -45,9 +45,12 @@
 
 <script>
 import VJsoneditor from "v-jsoneditor";
-import axios from "axios";
 
-let HISTORY_KEY = "mockapi-history";
+import EndpointApi from '../api/EndpointApi.js';
+import HistoryUtil from '../util/HistoryUtil.js';
+
+const endpointApi = new EndpointApi();
+const historyUtil = new HistoryUtil();
 
 export default {
   name: "Content",
@@ -69,18 +72,18 @@ export default {
     submitForm() {
       this.cleanAlerts();
       if (!this.validateForm()) {
-        this.showError("Complete the form")
+        this.showError("Complete the form");
         return;
       }
-      let requestBody = { name: this.name, method: this.method, body: this.json };
-      let headers = { headers: { "Content-Type": "application/json" }}
-      axios.post("http://localhost:8000/addEndpoint", requestBody, headers)
+      let body = { name: this.name, method: this.method, body: this.json };
+      endpointApi.createEndpoint(body)
         .then(() => {
-          this.showSuccessMessage("Endpoint generated correctly")
-          this.addRequestToLocalHistory(requestBody)
+          this.showSuccessMessage("Endpoint generated correctly");
+          historyUtil.addRequestToHistory(body);
+          this.history = historyUtil.getHistoryFromLocalStorage();
         })
         .catch((response) => {
-          this.showErrorMessage(`An error has ocurred: ${response.response.data.error}`)
+          this.showErrorMessage(`An error has ocurred: ${response.response.data.error}`);
         });
     },
     validateForm() {
@@ -89,18 +92,6 @@ export default {
       } else {
         return true;
       }
-    },
-    addRequestToLocalHistory(endpoint) {
-      let mockapiHistory = localStorage.getItem(HISTORY_KEY);
-      if(mockapiHistory == null){
-        localStorage.setItem(HISTORY_KEY, JSON.stringify({ requests: [ { ...endpoint } ] }));
-      } else {
-        let mockapiHistoryJSON = JSON.parse(mockapiHistory);
-        mockapiHistoryJSON.requests.unshift( { ...endpoint } )
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(mockapiHistoryJSON))
-      } 
-      let updatedHistory = JSON.parse(localStorage.getItem(HISTORY_KEY))
-      this.history = updatedHistory.requests;
     },
     showErrorMessage(message){
       this.alertSuccess = false;
@@ -118,8 +109,7 @@ export default {
     }
   },
   mounted() {
-    let savedRequests = localStorage.getItem(HISTORY_KEY);
-    this.history = savedRequests == null ? [] : JSON.parse(savedRequests).requests;
+    this.history = historyUtil.getHistoryFromLocalStorage();
   }
 };
 </script>
