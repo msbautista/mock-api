@@ -5,9 +5,7 @@ It's a tool when you need to mock an API for your frontend applications.
 
 This app was built with Java Spring Boot for the Backend and Vue.js for the Frontend.
 
-[TOC]
-
-#Backend
+# Backend
 
 ## Requirements
 
