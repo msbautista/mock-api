@@ -5,6 +5,10 @@ It's a tool when you need to mock an API for your frontend applications.
 
 This app was built with Java Spring Boot for the Backend and Vue.js for the Frontend.
 
+![image](https://user-images.githubusercontent.com/57375735/166621604-07552efa-9a45-4c9d-b7bc-c1542bed4ad0.png)
+
+![image](https://user-images.githubusercontent.com/57375735/166621738-8f1fde36-264d-4b54-b955-f5b196db1487.png)
+
 # Backend
 
 ## Requirements
